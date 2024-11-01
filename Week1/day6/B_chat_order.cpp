@@ -3,7 +3,7 @@ using namespace std;
 
 int main() 
 {
-    ios::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
     int n;
@@ -14,24 +14,18 @@ int main()
 
     for (int i = 0; i < n; i++) 
     {
-        string participate;
-        cin >> participate;
-
-        if (!seen[participate]) 
-        {
-            order.push_back(participate);
-            seen[participate] = true;
-        } 
-        else 
-        {
-            order.erase(remove(order.begin(), order.end(), participate), order.end());
-            order.push_back(participate);
-        }
+        string name;
+        cin >> name;
+        order.push_back(name);
     }
 
-    for (auto it = order.rbegin(); it != order.rend(); it++) 
+    for (int i = n - 1; i >= 0; i--) 
     {
-        cout << *it << endl;
+        if (!seen[order[i]]) 
+        {
+            seen[order[i]] = true;
+            cout << order[i] << "\n";
+        }
     }
 
     return 0;
